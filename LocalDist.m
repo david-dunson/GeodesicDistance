@@ -40,6 +40,10 @@ for i = 1:n
     local_SD(i,i) = 0; % set the diagonal element to be zero
     local_D(i,i) = 0;
 end
-local_SD = (local_SD + local_SD.')/2;  % symmetrize both matrices.
-local_D = (local_D + local_D)/2;
+%local_SD = (local_SD + local_SD.')/2;  % symmetrize both matrices.
+%local_D = (local_D + local_D.')/2;
+
+local_SD = min(local_SD, local_SD.');  % symmetrize both matrices.
+local_D = min(local_D, local_D.');
+
 return
